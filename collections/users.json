@@ -1,0 +1,1 @@
+{"_id":{"$oid":"5f25e6c195ec1b0d1685984a"},"email":"a@gmail.com","password":"$2a$10$sNQo.fjYTZRVOzaf.RAZuOdjccBdn8ZTGk2kZ4QnYgLNUuggubhs2","fullname":"Nguyen Van A","phone":"226 123 456789","address":"123 King St","created_at":{"$date":"2020-08-01T22:03:45.195Z"},"updated_at":{"$date":"2020-08-03T00:45:48.536Z"},"__v":0}

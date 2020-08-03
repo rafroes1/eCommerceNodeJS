@@ -1,0 +1,2 @@
+{"_id":{"$oid":"5f261fb516dd9c4a2d2af376"},"name":"Product 1","description":"Product 1","price":100.0,"shippingCost":10.0,"image":""}
+{"_id":{"$oid":"5f261fcb16dd9c4a2d2af377"},"name":"Product 2","description":"Product 2","price":200.0,"shippingCost":20.0,"image":""}
