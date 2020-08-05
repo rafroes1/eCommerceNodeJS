@@ -32,8 +32,16 @@ async function newComment(userId, body) {
 }
 
 router.get('/', async (req, res) => {
-	let comments = await Comment.find();
-	res.status(200).json(comments);
+	let output = [];
+
+	let comments = await Comment.find().select('userId productId content rating updated_at').cursor().eachAsync(async function(doc, i){
+		var obj = doc.toObject();
+		let userFullname = await User.findById(doc.userId).select('fullname');
+		obj.fullname = userFullname.fullname;
+		output.push(obj);
+	});
+
+	res.status(200).json(output);
 });
 
 router.get('/:productId', async (req, res) => {
@@ -45,7 +53,6 @@ router.get('/:productId', async (req, res) => {
 			let userFullname = await User.findById(doc.userId).select('fullname');
 			obj.fullname = userFullname.fullname;
 			output.push(obj);
-			console.log(obj);
 		});
 
 	res.status(200).json(output);
