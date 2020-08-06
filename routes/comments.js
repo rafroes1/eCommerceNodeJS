@@ -3,7 +3,6 @@ const router = express.Router();
 const Comment = require("../models/comment");
 const User = require("../models/user");
 const Cart = require("../models/cart");
-const db = require("../configs/database");
 
 router.post('/', async (req, res) => {
 	let userId = req.session.userId || null;

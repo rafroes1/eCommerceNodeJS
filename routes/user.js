@@ -47,20 +47,4 @@ router.put('/change-password', async (req, res) => {
   }
 });
 
-//this line is only for testing with user authentication
-router.post('/', async (req, res) => {
-  let ps = {id: 0};
-
-  try{
-    if(req.body.email && req.body.password && req.body.name){
-      req.session.userId = '5f25e6c195ec1b0d1685984a';
-      ps.id = 1;
-    }
-  }catch(err){
-    console.log(err);
-  }
-
-  res.json(ps);
-});
-
 module.exports = router;
