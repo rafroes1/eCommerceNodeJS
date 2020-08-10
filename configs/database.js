@@ -8,4 +8,4 @@ module.exports.init = async () => {
     console.log(err);
   });
   console.log("Connected to MongoDB");
-}
+};
