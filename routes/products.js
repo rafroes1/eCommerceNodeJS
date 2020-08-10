@@ -18,9 +18,8 @@ const Product = require("../models/product");
 
   router.get('/:productId', async (req, res) => {
 
-    const productName = req.params['productId'];
-    console.log(productName);
-     await Product.findOne({ name: productName }, function(err, result){
+    const producid = req.params['productId'];
+     await Product.findById(producid, function(err, result){
         console.log(result);
         res.status(200).json(result);
     });
