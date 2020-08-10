@@ -1,0 +1,2040 @@
+{
+	"info": {
+		"_postman_id": "7c35ace6-b32b-4786-b71a-edc5a8c50dd4",
+		"name": "eCommerceNodejs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "cart/add - invalid product id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2855b369-17b5-4e6c-b69a-8040bcc19cc8",
+						"exec": [
+							"pm.test(\"Add to Cart Case Invalid Product Id Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(400);",
+							"    pm.expect(jsonData.message).to.eql(\"This product is not exist.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"productId\": \"5f25e6a095ec1b0d16859849\",\n\t\"quantities\": 3\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/cart/add",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"cart",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cart/add - invalid quantities",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0c4dee62-cc14-4b65-89f5-65bad612d305",
+						"exec": [
+							"pm.test(\"Add to Cart Case Invalid Quantities Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(400);",
+							"    pm.expect(jsonData.message).to.eql(\"Quantities must greater than 0.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"productId\": \"5f261fb516dd9c4a2d2af376\",\n\t\"quantities\": 0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/cart/add",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"cart",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cart/add",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "88809594-f425-4fc2-a68f-57a51a35584e",
+						"exec": [
+							"pm.test(\"Add to Cart Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(jsonData.message).to.eql(\"A new product was added to cart successfully.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"productId\": \"5f261fb516dd9c4a2d2af376\",\n\t\"quantities\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/cart/add",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"cart",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cart/checkout - case guests",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b436f8a8-ca22-461f-a41a-b628037b5fb3",
+						"exec": [
+							"pm.test(\"Checkout Cart Case Guests Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(jsonData.message).to.eql(\"Purchased successfully.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"fullname\": \"Anonymous User\",\n\t\"phone\": \"123456\",\n\t\"address\": \"123 King St\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/cart/checkout",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"cart",
+						"checkout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cart/add",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ef90c006-bb52-48e5-a175-3ffe7a99bd40",
+						"exec": [
+							"pm.test(\"Add to Cart Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(jsonData.message).to.eql(\"A new product was added to cart successfully.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"productId\": \"5f261fb516dd9c4a2d2af376\",\n\t\"quantities\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/cart/add",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"cart",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cart/checkout - with invalid coupon",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "462465d0-d6cb-4816-b480-edb56aab1270",
+						"exec": [
+							"pm.test(\"Checkout Cart Case Case Invalid Coupon Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(400);",
+							"    pm.expect(jsonData.message).to.eql(\"This coupon code is not valid.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"fullname\": \"Anonymous User\",\n\t\"phone\": \"123456\",\n\t\"address\": \"123 King St\",\n\t\"couponCode\": \"X30xxxxxxxxx\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/cart/checkout",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"cart",
+						"checkout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cart/checkout - with coupon",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "822bbed4-0881-49eb-97ea-9660508c4009",
+						"exec": [
+							"pm.test(\"Checkout Cart With Coupon Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(jsonData.message).to.eql(\"Purchased successfully.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"fullname\": \"Anonymous User\",\n\t\"phone\": \"123456\",\n\t\"address\": \"123 King St\",\n\t\"couponCode\": \"X10\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/cart/checkout",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"cart",
+						"checkout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "authentication - login status false",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3c7e8d1e-0a86-482c-8dea-d7650fcf5b87",
+						"exec": [
+							"pm.test(\"Login Status Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(401);",
+							"    pm.expect(jsonData.isLoggedIn).to.eql(false);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/authentication",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"authentication"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "authentication/login - not exist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e8b987e2-8408-48ba-866e-b6f8de913227",
+						"exec": [
+							"pm.test(\"Login Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(401);",
+							"    pm.expect(jsonData.isLoggedIn).to.eql(false);",
+							"    pm.expect(jsonData.message).to.eql(\"Account does not exist.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"demo@gmail.com\",\n\t\"password\": \"123123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/authentication/login",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"authentication",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "authentication/login - wrong pass",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9127fb3a-69c2-4b11-8c13-47ef26e58b1e",
+						"exec": [
+							"pm.test(\"Login Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(401);",
+							"    pm.expect(jsonData.isLoggedIn).to.eql(false);",
+							"    pm.expect(jsonData.message).to.eql(\"Wrong password.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"a@gmail.com\",\n\t\"password\": \"1231233\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/authentication/login",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"authentication",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "authentication/login - missing params",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "28282069-a809-48cf-ab82-988b7ec714ed",
+						"exec": [
+							"pm.test(\"Login Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(401);",
+							"    pm.expect(jsonData.isLoggedIn).to.eql(false);",
+							"    pm.expect(jsonData.message).to.eql(\"Please input email and password.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/authentication/login",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"authentication",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "authentication/login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d4573002-7e48-48e1-af0d-6610092b85c4",
+						"exec": [
+							"pm.test(\"Login Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(jsonData.isLoggedIn).to.eql(true);",
+							"    pm.expect(jsonData.message).to.eql(\"Login successfuly.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"a@gmail.com\",\n\t\"password\": \"123123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/authentication/login",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"authentication",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "authentication - login status true",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4dd079bf-2d97-4d00-b3dc-dec3d09a0d53",
+						"exec": [
+							"pm.test(\"Login Status Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(jsonData.isLoggedIn).to.eql(true);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/authentication",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"authentication"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "authentication/logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d9c9f31f-e529-4956-b0f0-1dd44e8e3917",
+						"exec": [
+							"pm.test(\"Logout Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(jsonData.isLoggedIn).to.eql(false);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/authentication/logout",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"authentication",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create account ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca16c102-f1ba-4cb5-932f-b3b1591d0684",
+						"exec": [
+							"pm.test(\"Create Account\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(jsonData.message).to.eql(\"Account was successfully created.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test@user.com\",\n    \"password\": \"12345\",\n    \"fullname\": \"Test User\",\n    \"phone\": \"123-123-1212\",\n    \"address\": \"A1B 2C3\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/user/create-account",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"user",
+						"create-account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create account  - case missing params",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7c459a34-a173-492a-a02a-5e1d7311374e",
+						"exec": [
+							"pm.test(\"Create Account Case Missing Params Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(400);",
+							"    pm.expect(jsonData.message).to.eql(\"Missing parameters.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/user/create-account",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"user",
+						"create-account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update account - case doesn't login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2be4aaa9-cab4-4899-adde-e05cffc78db6",
+						"exec": [
+							"pm.test(\"Update Account Case Not Login Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(401);",
+							"    pm.expect(jsonData.message).to.eql(\"Please login into your account.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"vana\", \n    \"fullname\": \"Nguyen Van A\", \n    \"phone\": \"123456789\" , \n    \"address\": \"100 Victoria St\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/user/update-account",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"user",
+						"update-account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "change password - case doesn't login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9a6e7d91-e5d5-4873-9ef8-eb5bb572c764",
+						"exec": [
+							"pm.test(\"Change Password Case Not Login Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(401);",
+							"    pm.expect(jsonData.message).to.eql(\"Please login into your account.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"password\": \"123123\", \n    \"password_confirmation\": \"123123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/user/change-password",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"user",
+						"change-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "profile - case doesn't login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "166654de-59b5-428f-9bf8-54d1625a9b85",
+						"exec": [
+							"pm.test(\"Profile Case Not Login Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(401);",
+							"    pm.expect(jsonData.message).to.eql('Please login into your account.');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/user",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post comment - case doesn't login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "88c949db-0c0d-45fc-ad35-440cd2d525fa",
+						"exec": [
+							"pm.test(\"Post Comment Case Not Login Test\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.response.to.have.status(400);\r",
+							"    pm.expect(jsonData.status).to.eql('Fail');\r",
+							"    pm.expect(jsonData.message).to.eql('Log in to comment');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productId\": \"5f261fb516dd9c4a2d2af376\",\r\n    \"content\": \"first comment product 1\",\r\n    \"rating\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/comments",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "authentication - login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7cd6b66e-c939-48f7-ab6d-9e40c8dfc130",
+						"exec": [
+							"pm.test(\"Login Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.isLoggedIn).to.eql(true);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"a@gmail.com\",\n\t\"password\": \"123123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/authentication/login",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"authentication",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "profile",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fb11d3c0-57d9-4d5f-8881-7f62a54cb7c6",
+						"exec": [
+							"pm.test(\"Profile Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(jsonData).has.all.keys('_id', 'email', 'fullname', 'phone', 'address');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/user",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "change password - case miss params",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f98fd209-2ee3-412f-b923-5618028cb29c",
+						"exec": [
+							"pm.test(\"Change Password Missing Params Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(400);",
+							"    pm.expect(jsonData.message).to.eql(\"Missing parameters.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/user/change-password",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"user",
+						"change-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "change password - case not match",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cb221294-af9b-455b-b1f4-7809bab4b5f0",
+						"exec": [
+							"pm.test(\"Change Password Case Not Match Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(400);",
+							"    pm.expect(jsonData.message).to.eql(\"Password confirmation doesn't match Password.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"password\": \"123123\", \n    \"passwordConfirmation\": \"456456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/user/change-password",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"user",
+						"change-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "change password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e87be7e5-99b3-466b-93c2-9d3682567a3e",
+						"exec": [
+							"pm.test(\"Change Password Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(jsonData.message).to.eql(\"Password was changed successfully.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"password\": \"123123\", \n    \"passwordConfirmation\": \"123123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/user/change-password",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"user",
+						"change-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6a76328d-ba9c-446d-a062-b2dc72ef23f8",
+						"exec": [
+							"pm.test(\"Update Account Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(jsonData.message).to.eql(\"Account was successfully updated.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"a@gmail.com\",\n    \"fullname\": \"Nguyen Van A\",\n    \"phone\": \"123-456-789\",\n    \"address\": \"001 King A1B 2C3\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/user/update-account",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"user",
+						"update-account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cart - case empty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d9ed494a-79fb-4583-bc40-4d35f5773270",
+						"exec": [
+							"pm.test(\"Get Empty Cart Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(jsonData.length == 0).to.eql(true);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/cart",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"cart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cart/update - case empty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a691dc12-9961-4525-872c-84cd84ec39f0",
+						"exec": [
+							"pm.test(\"Update Empty Cart Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(400);",
+							"    pm.expect(jsonData.message).to.eql(\"Cart is empty.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"products\": [\n\t\t{\n\t\t\t\"productId\": 1,\n\t\t\t\"quantities\": 10\n\t\t},\n\t\t{\n\t\t\t\"productId\": 2,\n\t\t\t\"quantities\": 20\n\t\t}\n\t]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/cart/update",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"cart",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cart/remove - case empty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "83128273-0cd0-4448-a2b1-8f9d4fcd5ea4",
+						"exec": [
+							"pm.test(\"Remove Empty Cart Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(400);",
+							"    pm.expect(jsonData.message).to.eql(\"Cart is empty.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"product_id\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/cart/remove/5",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"cart",
+						"remove",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cart/clear - case empty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "92ec0aef-a212-4c63-b501-27000ab90474",
+						"exec": [
+							"pm.test(\"Clear Empty Cart Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(400);",
+							"    pm.expect(jsonData.message).to.eql(\"Cart is empty.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/cart/clear",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"cart",
+						"clear"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cart/checkout - case empty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a904218d-bac9-41d9-b915-e9fc29b891f6",
+						"exec": [
+							"pm.test(\"Checkout Empty Cart Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(400);",
+							"    pm.expect(jsonData.message).to.eql(\"Cart is empty.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"fullname\": \"aaa\",\n\t\"phone\": \"123456\",\n\t\"address\": \"123 King St\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/cart/checkout",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"cart",
+						"checkout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cart/add",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a75ba19d-fc97-4ce6-ac4a-c7b5909def0c",
+						"exec": [
+							"pm.test(\"Add to Cart Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(jsonData.message).to.eql(\"A new product was added to cart successfully.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"productId\": \"5f261fb516dd9c4a2d2af376\",\n\t\"quantities\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/cart/add",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"cart",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cart/add",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "40c7bbaf-e2b0-4b29-87d3-740251302a90",
+						"exec": [
+							"pm.test(\"Add to Cart Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(jsonData.message).to.eql(\"A new product was added to cart successfully.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"productId\": \"5f261fcb16dd9c4a2d2af377\",\n\t\"quantities\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/cart/add",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"cart",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "291e3312-9e7d-48ba-8756-f7d0f79df3eb",
+						"exec": [
+							"pm.test(\"Get Cart Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(jsonData.length > 0).to.eql(true);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/cart",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"cart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cart/update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cfdf61ae-4f2e-4915-bd7c-cffabaacdf56",
+						"exec": [
+							"pm.test(\"Update Cart Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(jsonData.message).to.eql(\"Cart was updated successfully.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"products\": [\n\t\t{\n\t\t\t\"productId\": \"5f261fb516dd9c4a2d2af376\",\n\t\t\t\"quantities\": 10\n\t\t},\n\t\t{\n\t\t\t\"productId\": \"5f261fcb16dd9c4a2d2af377\",\n\t\t\t\"quantities\": 20\n\t\t}\n\t]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/cart/update",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"cart",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cart/remove - case wrong product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7162f2db-2b3c-41a1-9ce5-8b06bafccba6",
+						"exec": [
+							"pm.test(\"Remove Wrong Product From Cart Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(400);",
+							"    pm.expect(jsonData.message).to.eql(\"Product does not exist in your cart.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/cart/remove/99999",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"cart",
+						"remove",
+						"99999"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cart/remove",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6836a7d8-5c98-4aea-97c3-801c867f9325",
+						"exec": [
+							"pm.test(\"Remove Product From Cart Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(jsonData.message).to.eql(\"Product was removed from cart successfully.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/cart/remove/5f261fb516dd9c4a2d2af376",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"cart",
+						"remove",
+						"5f261fb516dd9c4a2d2af376"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cart/clear",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "17d41a60-15e6-4c81-b59c-146812764e0d",
+						"exec": [
+							"pm.test(\"Clear Cart Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(jsonData.message).to.eql(\"Cart was cleared successfully.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/cart/clear",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"cart",
+						"clear"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cart/add",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c15718bc-306c-4f5a-8c0a-0e8d249d41cf",
+						"exec": [
+							"pm.test(\"Add to Cart Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(jsonData.message).to.eql(\"A new product was added to cart successfully.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"productId\": \"5f261fb516dd9c4a2d2af376\",\n\t\"quantities\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/cart/add",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"cart",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cart/checkout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "261edf8f-86cd-4ea4-862d-169ab1bc7351",
+						"exec": [
+							"pm.test(\"Checkout Cart Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(jsonData.message).to.eql(\"Purchased successfully.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"fullname\": \"Kitchener Waterloo\",\n\t\"phone\": \"(226) 123-4567\",\n\t\"address\": \"123 King St\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/cart/checkout",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"cart",
+						"checkout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "products",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "48f54206-be36-4d4e-bfd6-94c68d9d498d",
+						"exec": [
+							"pm.test(\"Get Products Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(jsonData.length > 0).to.eql(true);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/products",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"products"
+					]
+				},
+				"description": "get all product comments"
+			},
+			"response": []
+		},
+		{
+			"name": "product by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4d728b17-dd2b-48c8-afc5-44582f56ee0b",
+						"exec": [
+							"pm.test(\"Get Product By Id Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(jsonData).to.be.an('object').that.has.all.keys('_id', 'name', 'description', 'price', 'shippingCost', 'image');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/products/5f261fb516dd9c4a2d2af376",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"products",
+						"5f261fb516dd9c4a2d2af376"
+					]
+				},
+				"description": "get all product comments"
+			},
+			"response": []
+		},
+		{
+			"name": "post comment - case didn't buy pro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cd8e06cd-4cf6-403b-8d25-940b61104f1e",
+						"exec": [
+							"pm.test(\"Post Comment Test\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.response.to.have.status(400);\r",
+							"    pm.expect(jsonData.status).to.eql('Fail');\r",
+							"    pm.expect(jsonData.message).to.eql('You cant comment if you havent bought the product');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productId\": \"5f261fb516dd9c4a2d2af376a\",\r\n    \"content\": \"first comment product 1\",\r\n    \"rating\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/comments",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post comment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7840eb24-063f-4682-b2b2-e9bc48ddd3ae",
+						"exec": [
+							"pm.test(\"Post Comment Test\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.expect(jsonData.status).to.eql('Success');\r",
+							"    pm.expect(jsonData.message).to.eql('Commented successfully');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productId\": \"5f261fb516dd9c4a2d2af376\",\r\n    \"content\": \"first comment product 1\",\r\n    \"rating\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/comments",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get comments by productId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7d34e245-f00f-4891-b9d6-886bb93c1c86",
+						"exec": [
+							"pm.test(\"Get Comment By Product Id Test\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.expect(jsonData.length > 0).to.eql(true);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/comments/5f261fb516dd9c4a2d2af376",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"comments",
+						"5f261fb516dd9c4a2d2af376"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all comments",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f819f107-b07f-42a5-8e84-bdd1c47ead1c",
+						"exec": [
+							"pm.test(\"Get All Comments\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.expect(jsonData.length > 0).to.eql(true);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{domain}}/comments",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get purchase history",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fc932397-d66a-48d0-ab59-dd59a3d20662",
+						"exec": [
+							"pm.test(\"History Test\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.expect(jsonData.length > 0).to.eql(true);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{domain}}/history",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"history"
+					]
+				},
+				"description": "get purchase history of logged in user"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
