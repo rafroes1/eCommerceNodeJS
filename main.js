@@ -1,4 +1,5 @@
 const http = require("http");
+const cors = require('cors');
 const bodyParser = require("body-parser");
 const expressInstance = require("express");
 const express = new expressInstance();
@@ -15,6 +16,11 @@ const comments = require("./routes/comments");
 
 // connect to mongodb
 db.init();
+
+express.use(cors({
+  origin: true,
+  credentials: true
+}));
 
 express.use(bodyParser.urlencoded({ extended: true }));
 express.use(bodyParser.json());
