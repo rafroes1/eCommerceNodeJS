@@ -8,7 +8,6 @@ const Product = require("../models/product");
     router.get('/', async (req, res) => {
   
     await Product.find({}, function(err, result){
-        console.log(result);
         res.status(200).json(result);
     });
   });
@@ -20,7 +19,6 @@ const Product = require("../models/product");
 
     const producid = req.params['productId'];
      await Product.findById(producid, function(err, result){
-        console.log(result);
         res.status(200).json(result);
     });
   });
