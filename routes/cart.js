@@ -42,7 +42,7 @@ router.put('/update', (req, res) => {
   if(cart) {
     req.body.products.forEach(product => {
       let index = cart.findIndex(item => item.productId === product.productId);
-      cart[index].quantities = product.quantities;
+      cart[index].quantities = parseInt(product.quantities);
     });
     req.session.cart = cart;
 
