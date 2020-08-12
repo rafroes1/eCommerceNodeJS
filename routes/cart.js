@@ -4,8 +4,15 @@ const Cart = require("../models/cart");
 const Product = require("../models/product");
 const Coupon = require("../models/coupon");
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   let cart = req.session.cart || [];
+  console.log(cart.length)
+  for (let i = 0; i < cart.length; i++) {
+    let product = await Product.findById(cart[i].productId);
+    cart[i]['name'] = product.name;
+    cart[i]['price'] = product.price;
+    cart[i]['shippingCost'] = product.shippingCost;
+  }
   res.status(200).json(cart);
 });
 
@@ -165,10 +172,8 @@ async function checkout(userId, cart, data) {
     cartData.couponId = coupon.id;
     cartData.total = -coupon.value;
   }
-  // save cart
-  await cartData.save();
-  // handle items
-  cart.forEach(async function(item) {
+
+  for(item of cart) {
     let product = await Product.findById(item.productId);
     cartData.products.push({
       id: product.id,
@@ -177,8 +182,10 @@ async function checkout(userId, cart, data) {
       shippingCost: product.shippingCost
     });
     cartData.total += product.price * item.quantities + product.shippingCost;
-    await cartData.save();
-  });
+  };
+
+  // save cart
+  await cartData.save();
 
   return result;
 }
