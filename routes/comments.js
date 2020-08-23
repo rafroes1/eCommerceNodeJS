@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
     		});
 		}else{
 			res.status(400).json({
-      			message: 'You cant comment if you havent bought the product',
+      			message: 'You cant comment if you haven\'t bought the product',
       			status: 'Fail'
     		});
 		}

@@ -10,7 +10,7 @@ const cartSchema = new Schema({
   phone: String,
   address: String,
   status: { type: Number, default: 1 },
-  products: [{ _id: false, id: String, quantities: Number, price: Number, shippingCost: Number }]
+  products: [{ _id: false, id: String, quantities: Number, price: Number, shippingCost: Number, image: String }]
 }, 
 {
   timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }

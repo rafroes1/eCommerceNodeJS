@@ -178,7 +178,8 @@ async function checkout(userId, cart, data) {
       id: product.id,
       quantities: item.quantities,
       price: product.price,
-      shippingCost: product.shippingCost
+      shippingCost: product.shippingCost,
+      image: product.image
     });
     cartData.total += product.price * item.quantities + product.shippingCost;
   };

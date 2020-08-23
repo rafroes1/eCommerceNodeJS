@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 async function getHistory(userId, res){
 	let output = [];
 
-	let carts = await Cart.find({userId: userId, status: 3}).select('total products updated_at').cursor()
+	let carts = await Cart.find({userId: userId, status: 1}).select('total products updated_at').cursor()
 	.eachAsync(async function(doc, i){
 		var obj = doc.toObject();
 		for (index = 0; index < obj.products.length; index++) { 
