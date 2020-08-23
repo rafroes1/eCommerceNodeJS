@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
 });
 
 async function canComment(userId, productId){
-	let cart = Cart.findOne({userId: userId, status: 3, "products.id": productId});
+	let cart = Cart.findOne({userId: userId, status: 1, "products.id": productId});
 	return cart;
 }
 
