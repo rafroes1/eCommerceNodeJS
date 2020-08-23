@@ -21,7 +21,7 @@ router.post('/create-account', async (req, res) =>{
   let password = req.body.password;
   let fullname = req.body.fullname;
   let phone = req.body.phone;
-  let address = req.body.email;
+  let address = req.body.address;
 
   if( email !== undefined && password !== undefined && fullname !== undefined && phone !== undefined && address !== undefined){
     const salt = bcrypt.genSaltSync();
