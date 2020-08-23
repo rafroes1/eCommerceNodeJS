@@ -6,7 +6,6 @@ const Coupon = require("../models/coupon");
 
 router.get('/', async (req, res) => {
   let cart = req.session.cart || [];
-  console.log(cart.length)
   for (let i = 0; i < cart.length; i++) {
     let product = await Product.findById(cart[i].productId);
     cart[i]['name'] = product.name;
@@ -130,7 +129,7 @@ async function add(cart, productId, quantities) {
   if(cart) {
     let index = cart.findIndex(e => e.productId === productId);
     if(index >= 0) {
-      cart[index].quantities += quantities;
+      cart[index].quantities += parseInt(quantities);
     } else {
       cart.push({productId: productId, quantities: quantities});
     }
